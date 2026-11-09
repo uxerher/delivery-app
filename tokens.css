@@ -1,0 +1,42 @@
+/* Groceries — design tokens as CSS variables
+   Source: Figma file "Delivery App UI Kit (Community)" */
+:root {
+  /* Color */
+  --background: #F6F5F5;        /* Figma: Background */
+  --white: #FFFFFF;             /* Figma: White */
+  --text-primary: #2D0C57;      /* Figma: Text Primary */
+  --text-secondary: #9586A8;    /* Figma: Text Secondary */
+  --border: #D9D0E3;            /* Figma: Border */
+  --primary-button: #0BCE83;    /* Figma: Primary Button */
+  --accent: #6C0EE4;            /* selected chip text, selected tab */
+  --accent-soft: #E2CBFF;       /* Figma: Selected BG Violet */
+  --green: #CBF265;             /* Figma: Green (illustrations only) */
+  --media-placeholder: #DBD8DD; /* behind photos */
+
+  /* Font families */
+  --font-display: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Roboto, sans-serif;
+  --font-sans: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Roboto, sans-serif;
+  --font-card: Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Type styles: font shorthand (letter-spacing listed separately) */
+  --type-large-title: 700 34px/41px var(--font-display);  /* letter-spacing: 0.41px */
+  --type-price: 700 22px/22px var(--font-sans);           /* letter-spacing: -0.41px */
+  --type-item-title: 600 18px/22px var(--font-sans);      /* letter-spacing: -0.41px */
+  --type-body: 400 17px/22px var(--font-sans);            /* letter-spacing: -0.41px */
+  --type-unit: 400 16px/22px var(--font-sans);            /* letter-spacing: -0.41px */
+  --type-button: 600 15px/18px var(--font-sans);          /* uppercase, letter-spacing: -0.01px */
+  --type-chip: 500 14px/22px var(--font-sans);            /* letter-spacing: -0.41px */
+  --type-caption: 400 14px/22px var(--font-sans);         /* letter-spacing: -0.41px */
+  --type-card-title: 700 18px/21px var(--font-card);
+  --type-card-meta: 400 12px/14px var(--font-card);
+
+  /* Spacing */
+  --space-2: 8px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-10: 40px;
+
+  /* Radius */
+  --radius-md: 8px;
+  --radius-pill: 999px;
+}

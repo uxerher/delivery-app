@@ -5,6 +5,8 @@ A clickable prototype of two screens from the Figma **Delivery App UI Kit (Commu
 - **Categories** (`index.html`): category grid with live search.
 - **Vegetables** (`vegetables.html`): category chips, products with favorite and add-to-cart buttons; the cart count on the tab bar is shared across screens.
 
+- **Design system** (`design-system.html`): the Groceries style guide: colors, type, spacing, corners, components, icons and writing rules. The tokens are also here as `tokens.json` and `tokens.css`.
+
 Plain HTML, CSS and JavaScript: no build step. Open `index.html` in a browser, or publish the folder with GitHub Pages.
 
 ## Adding the photos
