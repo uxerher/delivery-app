@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F6F5F5">
+<title>Categories · Delivery App</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script src="app.js"></script>
+</head>
+<body>
+<main class="screen">
+  <div class="scroll">
+    <div class="nav">
+      <button type="button" class="back" id="back" aria-label="Back" style="background:none;border:0;padding:0;cursor:pointer">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+    </div>
+
+    <h1 class="large-title">Categories</h1>
+
+    <label class="search">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span class="visually-hidden">Search categories</span>
+      <input type="search" id="q" placeholder="Search" autocomplete="off">
+    </label>
+
+    <div class="grid" id="grid"></div>
+  </div>
+
+  <nav class="tabbar" aria-label="Main">
+    <a class="tab" href="index.html" aria-label="Categories" aria-current="page">
+      <svg class="grid-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+    </a>
+    <button type="button" class="tab tab-cart" aria-label="Cart">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <span class="badge" hidden>0</span>
+    </button>
+    <button type="button" class="tab" aria-label="Profile">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </button>
+  </nav>
+</main>
+
+<script>
+(function () {
+  // To use real photos, put image files in images/ and set `image` below, e.g. image: 'images/vegetables.jpg'
+  var categories = [
+    { label: 'Vegetables', count: 43, href: 'vegetables.html', image: '' },
+    { label: 'Fruits', count: 32, href: '', image: '' },
+    { label: 'Bread', count: 22, href: '', image: '' },
+    { label: 'Sweets', count: 56, href: '', image: '' },
+    { label: 'Pasta', count: 43, href: '', image: '' },
+    { label: 'Drinks', count: 43, href: '', image: '' }
+  ];
+  var grid = document.getElementById('grid');
+  var q = document.getElementById('q');
+
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+
+  function render() {
+    var needle = q.value.trim().toLowerCase();
+    var list = categories.filter(function (c) { return !needle || c.label.toLowerCase().indexOf(needle) !== -1; });
+    if (!list.length) {
+      grid.innerHTML = '<p class="empty">No categories match “' + esc(q.value) + '”</p>';
+      return;
+    }
+    grid.innerHTML = list.map(function (c) {
+      var media = c.image ? '<img src="' + esc(c.image) + '" alt="">' : esc(c.label) + ' photo';
+      var inner = '<div class="media">' + media + '</div><div class="title">' + esc(c.label) + '</div><div class="meta">(' + c.count + ')</div>';
+      var aria = esc(c.label + ', ' + c.count + ' items');
+      return c.href
+        ? '<a class="card" href="' + esc(c.href) + '" aria-label="' + aria + '">' + inner + '</a>'
+        : '<button type="button" class="card" aria-label="' + aria + '">' + inner + '</button>';
+    }).join('');
+  }
+
+  q.addEventListener('input', render);
+  document.getElementById('back').addEventListener('click', function () { q.value = ''; render(); });
+  render();
+})();
+</script>
+</body>
+</html>
